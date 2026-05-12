@@ -1,0 +1,2195 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hifzurrahman Agency Scaling Blueprint: From ₹0 to ₹10 Crore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #f59e0b;
+            --accent: #059669;
+            --neutral: #374151;
+            --surface: #f8fafc;
+            --text: #1f2937;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #f59e0b 100%);
+        }
+        
+        .toc-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid #e5e7eb;
+            overflow-y: auto;
+            z-index: 50;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .section-anchor {
+            scroll-margin-top: 2rem;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 2rem 0;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .bento-main {
+            grid-row: span 2;
+        }
+        
+        .metric-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .toc-sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bento-main {
+                grid-row: span 1;
+            }
+        }
+        
+        .citation {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary);
+            transition: all 0.2s ease;
+        }
+        
+        .citation:hover {
+            background: var(--primary);
+            color: white;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        /* Mind Map Styles */
+        .mind-map-container {
+            display: flex;
+            justify-content: center;
+            min-height: 600px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .mind-map-node {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 10px 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .mind-map-center {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            font-weight: bold;
+            border-color: #1e3a8a;
+        }
+        
+        .mind-map-primary {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: white;
+            font-weight: 600;
+            border-color: #f59e0b;
+        }
+        
+        .mind-map-secondary {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            font-weight: 500;
+            border-color: #059669;
+        }
+        
+        .mind-map-detail {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: white;
+            font-weight: 500;
+            border-color: #dc2626;
+        }
+        
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #3b82f6, #f59e0b, #059669);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: calc(50% - 40px);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            margin-left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #3b82f6;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            border-color: #f59e0b;
+        }
+        
+        .timeline-item:nth-child(3n) .timeline-dot {
+            border-color: #059669;
+        }
+    </style>
+    <base target="_blank"/>
+  <base target="_blank">
+</head>
+
+  <body class="bg-gray-50">
+    <!-- Table of Contents Sidebar -->
+    <nav class="toc-sidebar">
+      <div class="mb-8">
+        <h3 class="serif text-xl font-bold text-gray-900 mb-4">Scaling Blueprint</h3>
+        <p class="text-sm text-gray-600">From ₹0 to ₹10 Crore Performance Marketing Agency</p>
+      </div>
+
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#executive-summary" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Executive Summary</a>
+        </li>
+        <li>
+          <a href="#current-state" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Current State Assessment</a>
+        </li>
+        <li>
+          <a href="#strategic-positioning" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Strategic Positioning</a>
+        </li>
+        <li>
+          <a href="#revenue-roadmap" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Revenue Roadmap</a>
+        </li>
+        <li>
+          <a href="#team-structure" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Team Restructuring</a>
+        </li>
+        <li>
+          <a href="#client-acquisition" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Client Acquisition System</a>
+        </li>
+        <li>
+          <a href="#sops-framework" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">SOPs Framework</a>
+        </li>
+        <li>
+          <a href="#financial-plan" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Financial Plan</a>
+        </li>
+        <li>
+          <a href="#personal-brand" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Personal Brand Strategy</a>
+        </li>
+        <li>
+          <a href="#implementation" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Implementation Timeline</a>
+        </li>
+        <li>
+          <a href="#risk-mitigation" class="block py-2 px-3 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Risk Mitigation</a>
+        </li>
+      </ul>
+
+      <div class="mt-8 pt-6 border-t border-gray-200">
+        <p class="text-xs text-gray-500 mb-2">Key Metrics</p>
+        <div class="space-y-2 text-xs">
+          <div class="flex justify-between">
+            <span>Target Revenue</span>
+            <span class="font-semibold text-green-600">₹10 Cr</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Timeline</span>
+            <span class="font-semibold text-blue-600">4 Years</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Initial Investment</span>
+            <span class="font-semibold text-amber-600">₹7L</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section with Bento Layout -->
+      <section class="hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+          <img src="https://kimi-web-img.moonshot.cn/img/images.pexels.com/e24d1289bf2385f462e4763586ea7c0e1aa958e0.jpeg" alt="Jaipur city skyline with modern business district" class="w-full h-full object-cover" size="wallpaper" aspect="wide" style="photo" query="jaipur business district skyline" referrerpolicy="no-referrer" data-modified="1" data-score="0.00"/>
+        </div>
+
+        <div class="relative z-10 px-4 md:px-8 py-16">
+          <div class="bento-grid max-w-7xl mx-auto">
+            <!-- Main Content Area -->
+            <div class="bento-main">
+              <div class="mb-8">
+                <h1 class="serif text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                  <em class="block text-amber-200 text-xl md:text-2xl font-normal mb-2">From Loss-Making Generalist to</em>
+                  ₹10 Crore Performance Marketing Powerhouse
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl">
+                  A strategic blueprint for Hifzurrahman&#39;s agency scaling journey—from local Jaipur struggles to national performance marketing leadership.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <i class="fas fa-rocket text-amber-200 text-2xl mb-2"></i>
+                  <h3 class="font-semibold mb-1">Immediate Triage</h3>
+                  <p class="text-sm text-blue-100">Fire unprofitable clients, restructure team, implement SOPs</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <i class="fas fa-chart-line text-green-300 text-2xl mb-2"></i>
+                  <h3 class="font-semibold mb-1">4-Year Roadmap</h3>
+                  <p class="text-sm text-blue-100">₹3L → ₹1 Cr → ₹3 Cr → ₹6 Cr → ₹10 Cr ARR</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <i class="fas fa-users text-purple-300 text-2xl mb-2"></i>
+                  <h3 class="font-semibold mb-1">Role Clarity</h3>
+                  <p class="text-sm text-blue-100">Hifzu as CEO/CGO, Arbaz as COO/CCD</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Executive Summary Card -->
+            <div class="space-y-4">
+              <div class="metric-card">
+                <h3 class="serif text-lg font-semibold text-gray-900 mb-3">Executive Summary</h3>
+                <div class="space-y-3 text-sm">
+                  <div class="flex items-start gap-2">
+                    <i class="fas fa-circle text-amber-500 text-xs mt-2"></i>
+                    <span class="text-gray-900"><strong>Problem:</strong> Loss-making agency with 7-8 low-budget local clients</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <i class="fas fa-circle text-blue-500 text-xs mt-2"></i>
+                    <span class="text-gray-900"><strong>Solution:</strong> Restructure, specialize, and scale systematically</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <i class="fas fa-circle text-green-500 text-xs mt-2"></i>
+                    <span class="text-gray-900"><strong>Timeline:</strong> 4-year scaling blueprint</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-2">Key Investment</h4>
+                <div class="text-2xl font-bold text-amber-600">₹7L</div>
+                <p class="text-sm text-gray-600">Capital reserve for first 3 months</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary Section -->
+      <section id="executive-summary" class="section-anchor px-8 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="lg:col-span-2">
+              <h2 class="serif text-4xl font-bold text-gray-900 mb-6">Executive Summary</h2>
+              <div class="prose prose-lg max-w-none">
+                <p class="text-xl text-gray-700 mb-6 leading-relaxed">
+                  Hifzurrahman&#39;s agency faces a critical juncture: maintaining clients while losing money, with no systematic processes, undefined roles, and excessive founder dependency. This blueprint outlines the path from loss-making generalist to ₹10 crore performance marketing powerhouse.
+                </p>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
+                  <h3 class="font-semibold text-blue-900 mb-3">Current Situation</h3>
+                  <p class="text-blue-800">7-8 low-budget local clients (cafés, gym, salon, real estate) generating insufficient revenue to cover ₹28K monthly office expenses. Founders trapped in execution with no role clarity or SOPs.</p>
+                </div>
+
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-6 my-8">
+                  <h3 class="font-semibold text-amber-900 mb-3">Strategic Shift</h3>
+                  <p class="text-amber-800">Move from ₹10-20K local clients to ₹50K+ mid-market retainers, focusing on Meta Ads performance marketing with systematic processes and clear role definitions.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-3">Phase 0: Foundation (Months 1-3)</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span>Target Revenue</span>
+                    <span class="font-semibold text-blue-600">₹3L ARR</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Clients Needed</span>
+                    <span class="font-semibold">5 @ ₹50K</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Focus</span>
+                    <span class="text-xs">Cash flow positive</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-3">Phase 1: Engine Build (Year 1)</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span>Target Revenue</span>
+                    <span class="font-semibold text-green-600">₹1 Cr ARR</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Clients Needed</span>
+                    <span class="font-semibold">12-15 @ ₹60K</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Focus</span>
+                    <span class="text-xs">Predictable acquisition</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-3">Final Target (Year 4)</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span>Revenue Target</span>
+                    <span class="font-semibold text-purple-600">₹10 Cr ARR</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Client Base</span>
+                    <span class="font-semibold">40-50 @ ₹1.5L</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Valuation</span>
+                    <span class="font-semibold">₹30-50 Cr</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Strategic Mind Map -->
+          <div class="bg-gray-50 rounded-xl p-8 mb-12">
+            <h3 class="serif text-2xl font-bold text-gray-900 mb-6 text-center">Strategic Mind Map</h3>
+
+            <div class="mind-map-container">
+              <div class="relative w-full max-w-4xl">
+                <!-- Central Node -->
+                <div class="mind-map-node mind-map-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                  ₹10 Cr Agency
+                </div>
+
+                <!-- Primary Branches -->
+                <div class="mind-map-node mind-map-primary absolute top-20 left-20">
+                  Client Acquisition
+                </div>
+                <div class="mind-map-node mind-map-primary absolute top-20 right-20">
+                  Team Structure
+                </div>
+                <div class="mind-map-node mind-map-primary absolute bottom-20 left-20">
+                  SOPs &amp; Systems
+                </div>
+                <div class="mind-map-node mind-map-primary absolute bottom-20 right-20">
+                  Financial Planning
+                </div>
+
+                <!-- Secondary Branches -->
+                <div class="mind-map-node mind-map-secondary absolute top-5 left-40 text-xs">
+                  Local Jaipur
+                  <br/>Network Building
+                </div>
+                <div class="mind-map-node mind-map-secondary absolute top-5 right-40 text-xs">
+                  SDR Team
+                  <br/>Hiring
+                </div>
+                <div class="mind-map-node mind-map-secondary absolute bottom-5 left-40 text-xs">
+                  Meta Ads
+                  <br/>Optimization
+                </div>
+                <div class="mind-map-node mind-map-secondary absolute bottom-5 right-40 text-xs">
+                  Cash Flow
+                  <br/>Management
+                </div>
+
+                <!-- Detail Nodes -->
+                <div class="mind-map-node mind-map-detail absolute top-40 left-5 text-xs">
+                  Industry Events
+                  <br/>Manufacturing Hubs
+                </div>
+                <div class="mind-map-node mind-map-detail absolute top-40 right-5 text-xs">
+                  Role Clarity
+                  <br/>Hifzu CEO/CGO
+                </div>
+                <div class="mind-map-node mind-map-detail absolute bottom-40 left-5 text-xs">
+                  Client Lifecycle
+                  <br/>Creative Testing
+                </div>
+                <div class="mind-map-node mind-map-detail absolute bottom-40 right-5 text-xs">
+                  ₹7L Reserve
+                  <br/>Profit Margins
+                </div>
+
+                <!-- Connecting Lines -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none">
+                  <!-- Center to Primary -->
+                  <line x1="50%" y1="50%" x2="15%" y2="15%" stroke="#e5e7eb" stroke-width="2"></line>
+                  <line x1="50%" y1="50%" x2="85%" y2="15%" stroke="#e5e7eb" stroke-width="2"></line>
+                  <line x1="50%" y1="50%" x2="15%" y2="85%" stroke="#e5e7eb" stroke-width="2"></line>
+                  <line x1="50%" y1="50%" x2="85%" y2="85%" stroke="#e5e7eb" stroke-width="2"></line>
+
+                  <!-- Primary to Secondary -->
+                  <line x1="15%" y1="15%" x2="25%" y2="5%" stroke="#e5e7eb" stroke-width="1"></line>
+                  <line x1="85%" y1="15%" x2="75%" y2="5%" stroke="#e5e7eb" stroke-width="1"></line>
+                  <line x1="15%" y1="85%" x2="25%" y2="95%" stroke="#e5e7eb" stroke-width="1"></line>
+                  <line x1="85%" y1="85%" x2="75%" y2="95%" stroke="#e5e7eb" stroke-width="1"></line>
+
+                  <!-- Primary to Detail -->
+                  <line x1="15%" y1="15%" x2="5%" y2="35%" stroke="#e5e7eb" stroke-width="1"></line>
+                  <line x1="85%" y1="15%" x2="95%" y2="35%" stroke="#e5e7eb" stroke-width="1"></line>
+                  <line x1="15%" y1="85%" x2="5%" y2="65%" stroke="#e5e7eb" stroke-width="1"></line>
+                  <line x1="85%" y1="85%" x2="95%" y2="65%" stroke="#e5e7eb" stroke-width="1"></line>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Implementation Timeline -->
+          <div class="bg-white rounded-xl p-8 border border-gray-200 mb-12">
+            <h3 class="serif text-2xl font-bold text-gray-900 mb-6 text-center">Detailed Implementation Timeline</h3>
+
+            <div class="timeline-container relative">
+              <div class="timeline-line"></div>
+
+              <!-- Timeline Items -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <h4 class="font-semibold text-gray-900 mb-2">Days 1-7: Emergency Stabilization</h4>
+                  <ul class="text-sm space-y-1 text-gray-700">
+                    <li>• Terminate 3 lowest-paying clients professionally</li>
+                    <li>• Restructure Farhan to commission-based role</li>
+                    <li>• Document client termination lessons</li>
+                    <li>• Begin SDR hiring process</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <h4 class="font-semibold text-gray-900 mb-2">Days 8-14: Core Team Building</h4>
+                  <ul class="text-sm space-y-1 text-gray-700">
+                    <li>• Hire SDR + Videographer</li>
+                    <li>• Document first 5 critical SOPs</li>
+                    <li>• Team involvement in SOP creation</li>
+                    <li>• Skills assessment and culture fit validation</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <h4 class="font-semibold text-gray-900 mb-2">Days 15-21: System Implementation</h4>
+                  <ul class="text-sm space-y-1 text-gray-700">
+                    <li>• Implement project management tool</li>
+                    <li>• Finalize service packages and pricing</li>
+                    <li>• Launch LinkedIn personal brand</li>
+                    <li>• Begin daily content creation</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <h4 class="font-semibold text-gray-900 mb-2">Days 22-30: SDR Activation</h4>
+                  <ul class="text-sm space-y-1 text-gray-700">
+                    <li>• SDR begins lead generation activities</li>
+                    <li>• First 10 strategy sessions booked</li>
+                    <li>• Daily oversight and coaching</li>
+                    <li>• Document prospect objections</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <h4 class="font-semibold text-gray-900 mb-2">Days 31-60: Client Acquisition</h4>
+                  <ul class="text-sm space-y-1 text-gray-700">
+                    <li>• Close first 3 premium clients (₹60K+)</li>
+                    <li>• Test full SOP workflow end-to-end</li>
+                    <li>• Identify friction points for iteration</li>
+                    <li>• Validate sales process effectiveness</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <h4 class="font-semibold text-gray-900 mb-2">Days 61-90: Optimization &amp; Planning</h4>
+                  <ul class="text-sm space-y-1 text-gray-700">
+                    <li>• Feedback collection and rapid iteration</li>
+                    <li>• Phase 1 expansion plan documentation</li>
+                    <li>• Achievement of ₹3L MRR milestone</li>
+                    <li>• Strategic planning for next phase</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Current State Assessment -->
+      <section id="current-state" class="section-anchor px-8 py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Current State Assessment &amp; Critical Gaps</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="space-y-6">
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-building text-blue-500"></i>
+                  Agency Profile Snapshot
+                </h3>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                    <div>
+                      <p class="font-medium">Founders:</p>
+                      <p class="text-sm text-gray-600">Hifzu (Meta Ads, Strategy) &amp; Arbaz (Editing, Operations)</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                    <div>
+                      <p class="font-medium">Location:</p>
+                      <p class="text-sm text-gray-600">Jaipur, Rajasthan (Tier-2 city with untapped potential)</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-amber-500 rounded-full mt-2"></div>
+                    <div>
+                      <p class="font-medium">Current Portfolio:</p>
+                      <p class="text-sm text-gray-600">7-8 low-budget local clients across multiple verticals</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+                    <div>
+                      <p class="font-medium">Expansion Strategy:</p>
+                      <p class="text-sm text-gray-600">New connections through events, best cafes, and business owner hotspots</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-exclamation-triangle text-red-500"></i>
+                  Critical Pain Points
+                </h3>
+                <ul class="space-y-3 text-sm">
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-minus text-red-400 text-xs mt-1"></i>
+                    <span>Agency running at loss despite having clients</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-minus text-red-400 text-xs mt-1"></i>
+                    <span>No role clarity or defined responsibilities</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-minus text-red-400 text-xs mt-1"></i>
+                    <span>Excessive founder dependency for execution</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fas fa-minus text-red-400 text-xs mt-1"></i>
+                    <span>Content strategy relies on copying competitors</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Team Structure Analysis</h3>
+                <div class="space-y-4">
+                  <div class="border-l-4 border-blue-400 pl-4">
+                    <p class="font-medium text-sm">SMM Manager (Farhan)</p>
+                    <p class="text-xs text-gray-600">Commission-based, lacks execution discipline</p>
+                  </div>
+                  <div class="border-l-4 border-amber-400 pl-4">
+                    <p class="font-medium text-sm">Editor (Sonu)</p>
+                    <p class="text-xs text-gray-600">₹15K salary, slow output with quality issues</p>
+                  </div>
+                  <div class="border-l-4 border-gray-400 pl-4">
+                    <p class="font-medium text-sm">2 Editing Interns</p>
+                    <p class="text-xs text-gray-600">Basic skills, one paid ₹5K, one unpaid</p>
+                  </div>
+                  <div class="border-l-4 border-green-400 pl-4">
+                    <p class="font-medium text-sm">Phone Shooter</p>
+                    <p class="text-xs text-gray-600">Basic capability, Arbaz handles premium shoots</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-red-50 border border-red-200 rounded-xl p-6">
+                <h3 class="font-semibold text-red-900 mb-3 flex items-center gap-2">
+                  <i class="fas fa-chart-line-down"></i>
+                  Financial Reality Check
+                </h3>
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm">Monthly Office Expense</span>
+                    <span class="font-semibold text-red-700">₹28,000</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm">Average Client Retainer</span>
+                    <span class="font-semibold text-red-700">₹10-20K</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm">Current Status</span>
+                    <span class="font-semibold text-red-700">Loss-making</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Strategic Positioning -->
+      <section id="strategic-positioning" class="section-anchor px-8 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Strategic Positioning: Building the Foundation</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="lg:col-span-2">
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8 mb-8">
+                <h3 class="serif text-2xl font-bold text-gray-900 mb-6">Agency Clarity Framework</h3>
+
+                <div class="space-y-6">
+                  <div>
+                    <h4 class="font-semibold text-blue-900 mb-2">Ideal Client Profile</h4>
+                    <p class="text-gray-700 mb-3">Shift from small local businesses to mid-market revenue-ready clients:</p>
+                    <ul class="text-sm space-y-1 text-gray-600">
+                      <li>• Manufacturing suppliers (Hero MotoCorp/Bosch ecosystem)</li>
+                      <li>• Mid-market healthcare providers</li>
+                      <li>• Established educational institutions</li>
+                      <li>• Multi-location restaurant groups</li>
+                      <li>• Real estate developers/brokers</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-blue-900 mb-2">Core Service Specialization</h4>
+                    <p class="text-gray-700">Meta Ads performance marketing as primary revenue driver, with content creation as enabling infrastructure.</p>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-blue-900 mb-2">Unique Value Proposition</h4>
+                    <p class="text-gray-700 italic">&#34;Revenue-focused performance marketing for Jaipur&#39;s growth businesses&#34;</p>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-blue-900 mb-2">Network Expansion Strategy</h4>
+                    <p class="text-gray-700">Hifzu will actively build new connections through:</p>
+                    <ul class="text-sm space-y-1 text-gray-600">
+                      <li>• Regular visits to premium cafes and business centers</li>
+                      <li>• Attendance at local business events and networking meetups</li>
+                      <li>• Strategic positioning in manufacturing and industrial hubs</li>
+                      <li>• Building relationships with business association leaders</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-4">Service Packages</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between p-2 bg-blue-50 rounded">
+                    <span class="font-medium">Starter</span>
+                    <span class="font-bold text-blue-600">₹30K</span>
+                  </div>
+                  <div class="flex items-center justify-between p-2 bg-green-50 rounded">
+                    <span class="font-medium">Growth</span>
+                    <span class="font-bold text-green-600">₹60K</span>
+                  </div>
+                  <div class="flex items-center justify-between p-2 bg-purple-50 rounded">
+                    <span class="font-medium">Scale</span>
+                    <span class="font-bold text-purple-600">₹1.2L</span>
+                  </div>
+                  <div class="flex items-center justify-between p-2 bg-amber-50 rounded">
+                    <span class="font-medium">Strategy</span>
+                    <span class="font-bold text-amber-600">₹15K</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-3">Client Profile Evolution</h4>
+                <div class="space-y-2">
+                  <div>
+                    <p class="text-xs text-gray-500 mb-1">Current</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                      <div class="bg-red-400 h-2 rounded-full" style="width: 20%"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-1">Small local, ₹10-25K budget</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-gray-500 mb-1">Target</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                      <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-1">Mid-market, ₹50K-1.5L budget</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-4 border border-gray-200">
+                <h4 class="font-semibold text-gray-900 mb-3">Networking Goals</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span>Weekly Events</span>
+                    <span class="font-semibold">2-3</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>New Connections/Week</span>
+                    <span class="font-semibold">15-20</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Quality Leads/Month</span>
+                    <span class="font-semibold">8-10</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Revenue Roadmap -->
+      <section id="revenue-roadmap" class="section-anchor px-8 py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Phased Revenue Roadmap: ₹0 to ₹10 Crore</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="space-y-6">
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-foundation text-blue-500"></i>
+                  Phase 0: Foundation Fix (Months 1-3)
+                </h3>
+                <div class="space-y-4">
+                  <div class="bg-blue-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="font-medium">Target Revenue</span>
+                      <span class="font-bold text-blue-600">₹3L ARR</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="text-sm">Clients Needed</span>
+                      <span class="font-semibold text-sm">5 @ ₹50K avg</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2">Focus: Positive cash flow, basic systems implementation</p>
+                  </div>
+
+                  <ul class="text-sm space-y-2">
+                    <li class="flex items-start gap-2">
+                      <i class="fas fa-check-circle text-green-500 text-xs mt-1"></i>
+                      <span>Fire unprofitable clients, free capacity</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <i class="fas fa-check-circle text-green-500 text-xs mt-1"></i>
+                      <span>Implement core SOPs and processes</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <i class="fas fa-check-circle text-green-500 text-xs mt-1"></i>
+                      <span>Hire SDR and professional videographer</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-cogs text-green-500"></i>
+                  Phase 1: Engine Build (Year 1)
+                </h3>
+                <div class="space-y-4">
+                  <div class="bg-green-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="font-medium">Target Revenue</span>
+                      <span class="font-bold text-green-600">₹1 Cr ARR</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="text-sm">Clients Needed</span>
+                      <span class="font-semibold text-sm">12-15 @ ₹60K avg</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2">Focus: Predictable acquisition, full SOP implementation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-expand-arrows-alt text-purple-500"></i>
+                  Phase 2: Channel Diversification (Year 2)
+                </h3>
+                <div class="space-y-4">
+                  <div class="bg-purple-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="font-medium">Target Revenue</span>
+                      <span class="font-bold text-purple-600">₹3 Cr ARR</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2">Focus: Multi-channel services, remote client acquisition</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-rocket text-amber-500"></i>
+                  Phase 3: Precision Scaling (Year 3)
+                </h3>
+                <div class="space-y-4">
+                  <div class="bg-amber-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="font-medium">Target Revenue</span>
+                      <span class="font-bold text-amber-600">₹6 Cr ARR</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2">Focus: Predictive analytics, strategic partnerships</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-trophy text-indigo-500"></i>
+                  Phase 4: ₹10 Crore Achievement (Year 4)
+                </h3>
+                <div class="space-y-4">
+                  <div class="bg-indigo-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="font-medium">Target Revenue</span>
+                      <span class="font-bold text-indigo-600">₹10 Cr ARR</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2">Focus: Portfolio scale, revenue diversification, valuation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Restructuring -->
+      <section id="team-structure" class="section-anchor px-8 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Restructured Team Structure &amp; Role Clarity</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="space-y-6">
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-crown text-blue-600"></i>
+                  Leadership Layer (Founders)
+                </h3>
+
+                <div class="space-y-4">
+                  <div class="bg-white rounded-lg p-4 border border-blue-200">
+                    <h4 class="font-semibold text-blue-900 mb-2">Hifzu — CEO &amp; Chief Growth Officer</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• Client closing &amp; deal conversion</li>
+                      <li>• Meta Ads strategy &amp; oversight</li>
+                      <li>• Agency content (TCP reels)</li>
+                      <li>• Script final approval</li>
+                      <li>• Strategic partnerships</li>
+                      <li>• Network building at premium cafes</li>
+                      <li>• Attendance at local business events</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-green-200">
+                    <h4 class="font-semibold text-green-900 mb-2">Arbaz — COO &amp; Creative Director</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• Team management &amp; coordination</li>
+                      <li>• Editing quality control</li>
+                      <li>• Client relationship management</li>
+                      <li>• Billing &amp; salary administration</li>
+                      <li>• Premium client shoots</li>
+                      <li>• Creative process documentation</li>
+                      <li>• Behind-the-scenes content creation</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Immediate Hires Required</h3>
+                <div class="space-y-4">
+                  <div class="border-l-4 border-blue-400 pl-4">
+                    <p class="font-medium text-sm">Sales Development Representative</p>
+                    <p class="text-xs text-gray-600">₹15K base + ₹5K per closed deal</p>
+                    <p class="text-xs text-gray-500">Lead generation, cold outreach, meeting booking</p>
+                  </div>
+                  <div class="border-l-4 border-green-400 pl-4">
+                    <p class="font-medium text-sm">Professional Videographer</p>
+                    <p class="text-xs text-gray-600">₹25K salary</p>
+                    <p class="text-xs text-gray-500">All client reel shoots, agency content</p>
+                  </div>
+                  <div class="border-l-4 border-purple-400 pl-4">
+                    <p class="font-medium text-sm">Videographer Assistant</p>
+                    <p class="text-xs text-gray-600">₹8K stipend</p>
+                    <p class="text-xs text-gray-500">Lighting, equipment, B-roll support</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Production Team Optimization</h3>
+                <div class="space-y-4">
+                  <div class="bg-amber-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-amber-900 mb-2">Scripting Lead (Farhan Elevated)</h4>
+                    <p class="text-sm text-gray-700 mb-2">₹20K base + 10% commission on upsells</p>
+                    <ul class="text-xs space-y-1 text-gray-600">
+                      <li>• Client script creation</li>
+                      <li>• Platform strategy</li>
+                      <li>• SOP adherence</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-900 mb-2">Senior Editor (Sonu with PIP)</h4>
+                    <p class="text-sm text-gray-700 mb-2">₹20K with quality benchmarks</p>
+                    <ul class="text-xs space-y-1 text-gray-600">
+                      <li>• 48-hour turnaround</li>
+                      <li>• Zero spelling errors</li>
+                      <li>• Quality score &gt;80%</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-900 mb-2">Junior Editor</h4>
+                    <p class="text-sm text-gray-700">₹12K for basic edits and template work</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="font-semibold text-gray-900 mb-4">Future Hires Timeline</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Account Manager</p>
+                      <p class="text-xs text-gray-600">Phase 1 (15+ clients)</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Paid Ads Specialist</p>
+                      <p class="text-xs text-gray-600">Phase 2 (Google/YouTube expansion)</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Content Strategist</p>
+                      <p class="text-xs text-gray-600">Phase 2+ (Industry SOPs)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Client Acquisition System -->
+      <section id="client-acquisition" class="section-anchor px-8 py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Client Acquisition System: Local Jaipur + Remote India</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="lg:col-span-2">
+              <div class="space-y-6">
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                  <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fas fa-map-marker-alt text-blue-500"></i>
+                    Local Jaipur Dominance Strategy
+                  </h3>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-blue-900 mb-2">Manufacturing Sector</h4>
+                      <p class="text-sm text-gray-700">Target companies in Sitapura, VKI, Malviya industrial areas</p>
+                      <ul class="text-xs space-y-1 mt-2 text-gray-600">
+                        <li>• Hero MotoCorp supplier network</li>
+                        <li>• Bosch ecosystem partners</li>
+                        <li>• B2B lead generation focus</li>
+                      </ul>
+                    </div>
+
+                    <div class="bg-green-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-green-900 mb-2">Business Associations</h4>
+                      <p class="text-sm text-gray-700">CII, PHDCCI, Jaipur Trade Fair participation</p>
+                      <ul class="text-xs space-y-1 mt-2 text-gray-600">
+                        <li>• Industry event sponsorship</li>
+                        <li>• Educational content presentations</li>
+                        <li>• Credibility building</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="bg-amber-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-amber-900 mb-2">Referral Engine</h4>
+                    <p class="text-sm text-gray-700 mb-2">20% commission for qualified client introductions</p>
+                    <div class="flex items-center gap-2 mt-2">
+                      <i class="fas fa-gift text-amber-600"></i>
+                      <span class="text-xs text-gray-600">Quarterly partner appreciation events</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                  <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fab fa-linkedin text-blue-600"></i>
+                    LinkedIn B2B Lead Generation
+                  </h3>
+
+                  <div class="space-y-4">
+                    <div class="border-l-4 border-blue-400 pl-4">
+                      <h4 class="font-medium text-sm">Hifzu Personal Brand</h4>
+                      <p class="text-xs text-gray-600">Daily content on Meta Ads tactics, client results, agency journey</p>
+                    </div>
+                    <div class="border-l-4 border-green-400 pl-4">
+                      <h4 class="font-medium text-sm">Arbaz LinkedIn Presence</h4>
+                      <p class="text-xs text-gray-600">Behind-the-scenes creative process, editing tips</p>
+                    </div>
+                    <div class="border-l-4 border-purple-400 pl-4">
+                      <h4 class="font-medium text-sm">SDR LinkedIn Outreach</h4>
+                      <p class="text-xs text-gray-600">50 personalized connection requests/day, systematic follow-up</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-4">Lead Generation Funnel</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between p-2 bg-blue-50 rounded">
+                    <span class="text-sm">Lead to Meeting</span>
+                    <span class="font-bold text-blue-600">20%</span>
+                  </div>
+                  <div class="flex items-center justify-between p-2 bg-green-50 rounded">
+                    <span class="text-sm">Meeting to Close</span>
+                    <span class="font-bold text-green-600">30%</span>
+                  </div>
+                  <div class="flex items-center justify-between p-2 bg-purple-50 rounded">
+                    <span class="text-sm">Referral % Target</span>
+                    <span class="font-bold text-purple-600">25-40%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-4">Free Strategy Session</h4>
+                <div class="bg-amber-50 p-4 rounded-lg">
+                  <h5 class="font-semibold text-amber-900 mb-2">&#34;Revenue Audit&#34;</h5>
+                  <p class="text-sm text-gray-700 mb-3">30-minute lead magnet offering</p>
+                  <div class="space-y-2 text-xs">
+                    <div class="flex justify-between">
+                      <span>Current Situation</span>
+                      <span class="text-amber-600">10 min</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Opportunity ID</span>
+                      <span class="text-amber-600">10 min</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Next Steps</span>
+                      <span class="text-amber-600">10 min</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-4 border border-gray-200">
+                <h4 class="font-semibold text-gray-900 mb-3">SDR Daily Targets</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span>LinkedIn Outreach</span>
+                    <span class="font-semibold">50/day</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Follow-up Messages</span>
+                    <span class="font-semibold">20/day</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Meetings Booked</span>
+                    <span class="font-semibold">15-20/month</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOPs Framework -->
+      <section id="sops-framework" class="section-anchor px-8 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Standard Operating Procedures (SOPs) Framework</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="space-y-6">
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-lifecycle text-blue-600"></i>
+                  Client Lifecycle SOPs
+                </h3>
+
+                <div class="space-y-4">
+                  <div class="bg-white rounded-lg p-4 border border-blue-200">
+                    <h4 class="font-semibold text-blue-900 mb-2">1. Client Qualification</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• Budget threshold: ₹30K+ monthly minimum</li>
+                      <li>• Decision-maker access required</li>
+                      <li>• Growth readiness assessment</li>
+                      <li>• Industry vertical alignment</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-green-200">
+                    <h4 class="font-semibold text-green-900 mb-2">2. Onboarding Process</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• 48-hour kickoff from contract signature</li>
+                      <li>• Asset collection checklist</li>
+                      <li>• Goal-setting workshop</li>
+                      <li>• Tracking implementation verification</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-purple-200">
+                    <h4 class="font-semibold text-purple-900 mb-2">3. Monthly Reporting</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• ROAS and lead cost dashboard</li>
+                      <li>• Conversion rate analysis</li>
+                      <li>• Creative performance metrics</li>
+                      <li>• Weekly snapshot emails</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Content Production SOPs</h3>
+                <div class="space-y-3">
+                  <div class="border-l-4 border-blue-400 pl-4">
+                    <p class="font-medium text-sm">Scripting Template</p>
+                    <p class="text-xs text-gray-600">Hook-Problem-Solution-CTA structure with industry variations</p>
+                  </div>
+                  <div class="border-l-4 border-green-400 pl-4">
+                    <p class="font-medium text-sm">Shooting Checklist</p>
+                    <p class="text-xs text-gray-600">Equipment, lighting, audio, B-roll requirements per video type</p>
+                  </div>
+                  <div class="border-l-4 border-amber-400 pl-4">
+                    <p class="font-medium text-sm">Editing Standards</p>
+                    <p class="text-xs text-gray-600">Turnaround times, quality checklist, revision protocols</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Meta Ads Management SOPs</h3>
+                <div class="space-y-4">
+                  <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-900 mb-2">Campaign Setup</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• Tracking verification mandatory</li>
+                      <li>• Pixel installation &amp; CAPI configuration</li>
+                      <li>• UTM parameter standardization</li>
+                      <li>• Event tracking implementation</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-900 mb-2">Creative Testing</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• 3 hooks × 2 visuals × 2 CTAs = 12 variations</li>
+                      <li>• 72-hour minimum testing period</li>
+                      <li>• 20% performance improvement threshold</li>
+                      <li>• Systematic scaling protocol</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-amber-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-amber-900 mb-2">Budget Allocation</h4>
+                    <div class="flex items-center gap-2 mb-2">
+                      <div class="w-16 bg-amber-200 h-4 rounded"></div>
+                      <span class="text-xs">70% Proven Winners</span>
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                      <div class="w-8 bg-amber-300 h-4 rounded"></div>
+                      <span class="text-xs">20% Testing</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div class="w-4 bg-amber-400 h-4 rounded"></div>
+                      <span class="text-xs">10% Experimental</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="font-semibold text-gray-900 mb-4">Team Communication SOPs</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Daily Standups</p>
+                      <p class="text-xs text-gray-600">15-minute sync on blockers and priorities</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Weekly Review</p>
+                      <p class="text-xs text-gray-600">Client performance, creative pipeline, sales metrics</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Monthly All-Hands</p>
+                      <p class="text-xs text-gray-600">Financial review, goal progress, training session</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Financial Plan -->
+      <section id="financial-plan" class="section-anchor px-8 py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Financial Plan &amp; Scaling Budget</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="lg:col-span-2">
+              <div class="bg-white rounded-xl p-6 border border-gray-200 mb-6">
+                <h3 class="font-semibold text-gray-900 mb-4">Month 1-3 Restructuring Budget</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-3">Team Costs (Monthly)</h4>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex justify-between">
+                        <span>Hifzu (Founder)</span>
+                        <span>₹20,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Arbaz (Founder)</span>
+                        <span>₹20,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Farhan (Scripting Lead)</span>
+                        <span>₹20,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Sonu (Senior Editor)</span>
+                        <span>₹20,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Junior Editor</span>
+                        <span>₹12,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>SDR (New Hire)</span>
+                        <span>₹15,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Videographer</span>
+                        <span>₹25,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Assistant</span>
+                        <span>₹8,000</span>
+                      </div>
+                      <hr class="my-2"/>
+                      <div class="flex justify-between font-semibold">
+                        <span>Total Team</span>
+                        <span class="text-blue-600">₹1,40,000</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-3">Operational Costs</h4>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex justify-between">
+                        <span>Office &amp; Operations</span>
+                        <span>₹45,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Tools &amp; Software</span>
+                        <span>₹15,000</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Founder Living</span>
+                        <span>₹40,000</span>
+                      </div>
+                      <hr class="my-2"/>
+                      <div class="flex justify-between font-semibold">
+                        <span>Total Monthly Burn</span>
+                        <span class="text-red-600">₹2,40,000</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 p-4 bg-amber-50 rounded-lg">
+                  <h4 class="font-medium text-amber-900 mb-2">Required Capital Reserve</h4>
+                  <div class="flex justify-between items-center">
+                    <span>3 months operating reserve</span>
+                    <span class="font-bold text-amber-600">₹7,20,000</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mt-1">Recommended with contingency: ₹10,00,000</p>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Revenue Milestones &amp; Profitability</h3>
+                <div class="space-y-4">
+                  <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-blue-900 mb-2">Break-Even: Month 2</h4>
+                    <p class="text-sm text-gray-700">₹2.5L monthly revenue with 5 clients @ ₹50K average</p>
+                  </div>
+
+                  <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-green-900 mb-2">Profitability: Month 4</h4>
+                    <p class="text-sm text-gray-700">₹4L monthly revenue with 40% net margin</p>
+                    <p class="text-xs text-gray-600 mt-1">₹1.6L monthly surplus generated</p>
+                  </div>
+
+                  <div class="bg-purple-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-purple-900 mb-2">Scaling Inflection: Month 9</h4>
+                    <p class="text-sm text-gray-700">₹8L monthly revenue triggers Account Manager hire</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-4">Year 1 Financial Projection</h4>
+                <div class="space-y-4">
+                  <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600">₹48L</div>
+                    <div class="text-sm">Revenue Target</div>
+                  </div>
+
+                  <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                      <span>Q1 Revenue</span>
+                      <span>₹7.5L</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Q2 Revenue</span>
+                      <span>₹19.5L</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Q3 Revenue</span>
+                      <span>₹40.5L</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Q4 Revenue</span>
+                      <span>₹67.5L</span>
+                    </div>
+                  </div>
+
+                  <div class="pt-2 border-t">
+                    <div class="flex justify-between font-semibold">
+                      <span>Net Profit (33%)</span>
+                      <span class="text-green-600">₹16L</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-4">Investment Timeline</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-amber-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Year 2: ₹15L</p>
+                      <p class="text-xs text-gray-600">Team expansion &amp; office upgrade</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Year 3: ₹25L</p>
+                      <p class="text-xs text-gray-600">Technology &amp; senior hires</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Year 4: Self-funded</p>
+                      <p class="text-xs text-gray-600">₹10 Cr push from cash reserves</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-4 border border-gray-200">
+                <h4 class="font-semibold text-gray-900 mb-3">Financial Trajectory</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span>Year 1 Revenue</span>
+                    <span class="font-semibold">₹48L</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Year 2 Target</span>
+                    <span class="font-semibold text-blue-600">₹1.5 Cr</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Year 3 Target</span>
+                    <span class="font-semibold text-green-600">₹3 Cr</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Year 4 Target</span>
+                    <span class="font-semibold text-purple-600">₹10 Cr</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personal Brand Strategy -->
+      <section id="personal-brand" class="section-anchor px-8 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Hifzu&#39;s Personal Brand &amp; Content Strategy</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="space-y-6">
+              <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-broadcast-tower text-blue-600"></i>
+                  &#34;TCP&#34; — The Content Platform
+                </h3>
+
+                <div class="space-y-4">
+                  <div class="bg-white rounded-lg p-4 border border-blue-200">
+                    <h4 class="font-semibold text-blue-900 mb-2">Weekly Reels Strategy</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• B-rolls + voiceover on Meta Ads tactics</li>
+                      <li>• Client wins with specific numbers</li>
+                      <li>• Agency journey lessons</li>
+                      <li>• Clear CTAs for consultation</li>
+                      <li>• Networking event highlights</li>
+                      <li>• Cafe meetings with potential clients</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-green-200">
+                    <h4 class="font-semibold text-green-900 mb-2">Monthly Deep-Dive</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• 15-20 minute YouTube videos</li>
+                      <li>• Complete campaign case studies</li>
+                      <li>• Strategy walkthroughs</li>
+                      <li>• Client testimonials included</li>
+                      <li>• Industry-specific deep dives</li>
+                      <li>• Behind-the-scenes agency operations</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-purple-200">
+                    <h4 class="font-semibold text-purple-900 mb-2">Arbaz Collaboration</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• Editing myths debunked</li>
+                      <li>• Creative process behind-the-scenes</li>
+                      <li>• Team culture documentation</li>
+                      <li>• Quality standards explanation</li>
+                      <li>• Equipment and technique tutorials</li>
+                      <li>• Client shoot preparation insights</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Content Pillars</h3>
+                <div class="space-y-3">
+                  <div class="border-l-4 border-blue-400 pl-4">
+                    <p class="font-medium text-sm">Educational</p>
+                    <p class="text-xs text-gray-600">How-to Meta Ads content for business owners</p>
+                  </div>
+                  <div class="border-l-4 border-green-400 pl-4">
+                    <p class="font-medium text-sm">Proof</p>
+                    <p class="text-xs text-gray-600">Real client results with specific numbers</p>
+                  </div>
+                  <div class="border-l-4 border-amber-400 pl-4">
+                    <p class="font-medium text-sm">Journey</p>
+                    <p class="text-xs text-gray-600">Transparent agency building story</p>
+                  </div>
+                  <div class="border-l-4 border-purple-400 pl-4">
+                    <p class="font-medium text-sm">Authority</p>
+                    <p class="text-xs text-gray-600">Industry-specific strategies</p>
+                  </div>
+                  <div class="border-l-4 border-red-400 pl-4">
+                    <p class="font-medium text-sm">Networking</p>
+                    <p class="text-xs text-gray-600">Event coverage and connection building</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Distribution Strategy</h3>
+
+                <div class="space-y-4">
+                  <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-900 mb-2">Primary Channels</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• Instagram Reels (daily Stories)</li>
+                      <li>• YouTube Shorts (5-7/week)</li>
+                      <li>• Native formatting for each platform</li>
+                      <li>• Algorithm optimization focus</li>
+                      <li>• Cross-platform content adaptation</li>
+                      <li>• Consistent posting schedule</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-900 mb-2">Secondary Channels</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• LinkedIn personal posts</li>
+                      <li>• Document carousels</li>
+                      <li>• Professional insights</li>
+                      <li>• B2B decision-maker focus</li>
+                      <li>• Industry-specific content</li>
+                      <li>• Thought leadership articles</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-amber-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-amber-900 mb-2">Local Activation</h4>
+                    <ul class="text-sm space-y-1 text-gray-700">
+                      <li>• WhatsApp Status updates</li>
+                      <li>• Jaipur business community focus</li>
+                      <li>• Referral generation</li>
+                      <li>• Local event coverage</li>
+                      <li>• Cafe meeting highlights</li>
+                      <li>• Manufacturing hub insights</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="font-semibold text-gray-900 mb-4">Content Repurposing</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3">
+                    <i class="fas fa-recycle text-blue-500"></i>
+                    <div>
+                      <p class="font-medium text-sm">Long to Short</p>
+                      <p class="text-xs text-gray-600">YouTube deep-dive → Reels/Shorts</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <i class="fas fa-share-alt text-green-500"></i>
+                    <div>
+                      <p class="font-medium text-sm">Cross-Platform</p>
+                      <p class="text-xs text-gray-600">LinkedIn → WhatsApp Status</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <i class="fas fa-sync text-purple-500"></i>
+                    <div>
+                      <p class="font-medium text-sm">Evergreen Updates</p>
+                      <p class="text-xs text-gray-600">Refresh successful content</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-4 border border-gray-200">
+                <h4 class="font-semibold text-gray-900 mb-3">Content Calendar</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span>Instagram Reels</span>
+                    <span class="font-semibold">3-4/week</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>YouTube Shorts</span>
+                    <span class="font-semibold">5-7/week</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>LinkedIn Posts</span>
+                    <span class="font-semibold">3/week</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Deep-Dive Videos</span>
+                    <span class="font-semibold">1/month</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Event Coverage</span>
+                    <span class="font-semibold">2-3/week</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Implementation Timeline -->
+      <section id="implementation" class="section-anchor px-8 py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Implementation Timeline: First 90 Days</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="lg:col-span-2">
+              <div class="space-y-6">
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                  <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fas fa-exclamation-triangle text-red-500"></i>
+                    Days 1-30: Emergency Stabilization
+                  </h3>
+
+                  <div class="space-y-4">
+                    <div class="bg-red-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-red-900 mb-2">Week 1: Critical Actions</h4>
+                      <ul class="text-sm space-y-1 text-gray-700">
+                        <li>• Fire 3 lowest-paying clients professionally</li>
+                        <li>• Restructure Farhan to commission-based</li>
+                        <li>• Post SDR job across multiple channels</li>
+                        <li>• Document lessons from terminated clients</li>
+                      </ul>
+                    </div>
+
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-blue-900 mb-2">Week 2: Core Hiring</h4>
+                      <ul class="text-sm space-y-1 text-gray-700">
+                        <li>• Hire SDR + Videographer through structured process</li>
+                        <li>• Document first 5 critical SOPs</li>
+                        <li>• Team involvement in SOP creation</li>
+                        <li>• Skills testing and culture fit assessment</li>
+                      </ul>
+                    </div>
+
+                    <div class="bg-green-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-green-900 mb-2">Week 3-4: System Setup</h4>
+                      <ul class="text-sm space-y-1 text-gray-700">
+                        <li>• Implement project management tool</li>
+                        <li>• Finalize service packages and pricing</li>
+                        <li>• Launch LinkedIn personal brand</li>
+                        <li>• Begin daily content creation</li>
+                        <li>• Start networking at local business events</li>
+                        <li>• Begin cafe visits for networking</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                  <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="fas fa-cogs text-blue-500"></i>
+                    Days 31-60: System Activation
+                  </h3>
+
+                  <div class="space-y-3">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-blue-900 mb-2">Week 5-6: SDR Productivity</h4>
+                      <ul class="text-sm space-y-1 text-gray-700">
+                        <li>• SDR begins lead generation activities</li>
+                        <li>• First 10 strategy sessions booked</li>
+                        <li>• Daily oversight and coaching</li>
+                        <li>• Document prospect objections</li>
+                      </ul>
+                    </div>
+
+                    <div class="bg-green-50 p-4 rounded-lg">
+                      <h4 class="font-medium text-green-900 mb-2">Week 7-8: Client Closing</h4>
+                      <ul class="text-sm space-y-1 text-gray-700">
+                        <li>• Close first 3 premium clients (₹60K+)</li>
+                        <li>• Test full SOP workflow end-to-end</li>
+                        <li>• Identify friction points for iteration</li>
+                        <li>• Validate sales process effectiveness</li>
+                        <li>• Document networking success stories</li>
+                        <li>• Optimize cafe and event selection</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-4">90-Day Success Criteria</h4>
+                <div class="space-y-3">
+                  <div class="bg-green-50 p-3 rounded-lg">
+                    <div class="flex items-center gap-2 mb-1">
+                      <i class="fas fa-check-circle text-green-600"></i>
+                      <span class="font-medium text-sm">Revenue Milestone</span>
+                    </div>
+                    <p class="text-xs text-gray-700">₹3L monthly recurring revenue achieved</p>
+                  </div>
+
+                  <div class="bg-blue-50 p-3 rounded-lg">
+                    <div class="flex items-center gap-2 mb-1">
+                      <i class="fas fa-users text-blue-600"></i>
+                      <span class="font-medium text-sm">Client Base</span>
+                    </div>
+                    <p class="text-xs text-gray-700">5 premium clients at ₹50K+ average</p>
+                  </div>
+
+                  <div class="bg-purple-50 p-3 rounded-lg">
+                    <div class="flex items-center gap-2 mb-1">
+                      <i class="fas fa-cogs text-purple-600"></i>
+                      <span class="font-medium text-sm">Systems</span>
+                    </div>
+                    <p class="text-xs text-gray-700">All core SOPs implemented and tested</p>
+                  </div>
+
+                  <div class="bg-amber-50 p-3 rounded-lg">
+                    <div class="flex items-center gap-2 mb-1">
+                      <i class="fas fa-chart-line text-amber-600"></i>
+                      <span class="font-medium text-sm">Team</span>
+                    </div>
+                    <p class="text-xs text-gray-700">Complete team restructuring successful</p>
+                  </div>
+
+                  <div class="bg-indigo-50 p-3 rounded-lg">
+                    <div class="flex items-center gap-2 mb-1">
+                      <i class="fas fa-network-wired text-indigo-600"></i>
+                      <span class="font-medium text-sm">Network</span>
+                    </div>
+                    <p class="text-xs text-gray-700">15+ new quality connections established</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="metric-card">
+                <h4 class="font-semibold text-gray-900 mb-4">Days 61-90: Momentum Building</h4>
+                <div class="space-y-3">
+                  <div class="border-l-4 border-blue-400 pl-3">
+                    <p class="font-medium text-sm">Week 9-10: Optimization</p>
+                    <p class="text-xs text-gray-600">Feedback collection and rapid iteration</p>
+                  </div>
+                  <div class="border-l-4 border-green-400 pl-3">
+                    <p class="font-medium text-sm">Week 11-12: Planning</p>
+                    <p class="text-xs text-gray-600">Phase 1 expansion plan documentation</p>
+                  </div>
+                  <div class="border-l-4 border-purple-400 pl-3">
+                    <p class="font-medium text-sm">Week 13: Celebration</p>
+                    <p class="text-xs text-gray-600">Achievement of ₹3L MRR milestone</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-xl p-4 border border-gray-200">
+                <h4 class="font-semibold text-gray-900 mb-3">Key Metrics by Day 90</h4>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between">
+                    <span>SDR Productivity</span>
+                    <span class="font-semibold">50 outreach/day</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Meetings Booked</span>
+                    <span class="font-semibold">15-20/month</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Clients Closed</span>
+                    <span class="font-semibold">3 premium</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>SOP Adherence</span>
+                    <span class="font-semibold">85%+</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Network Connections</span>
+                    <span class="font-semibold">15+ quality</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4">
+                <h4 class="font-semibold text-green-900 mb-2">Celebration Milestone</h4>
+                <p class="text-sm text-gray-700">Achievement of ₹3L MRR validates the restructuring strategy and builds momentum for Phase 1 expansion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Risk Mitigation -->
+      <section id="risk-mitigation" class="section-anchor px-8 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">Risk Mitigation &amp; Success Metrics</h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="space-y-6">
+              <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6">
+                <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <i class="fas fa-shield-alt text-red-600"></i>
+                  Critical Risks &amp; Contingencies
+                </h3>
+
+                <div class="space-y-4">
+                  <div class="bg-white rounded-lg p-4 border border-red-200">
+                    <h4 class="font-semibold text-red-900 mb-2">Client Concentration Risk</h4>
+                    <p class="text-sm text-gray-700 mb-2">No single client &gt;20% of revenue</p>
+                    <ul class="text-xs space-y-1 text-gray-600">
+                      <li>• Monthly revenue concentration review</li>
+                      <li>• New client acquisition prioritization</li>
+                      <li>• Diversification initiatives at 15% threshold</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-blue-200">
+                    <h4 class="font-semibold text-blue-900 mb-2">Founder Dependency</h4>
+                    <p class="text-sm text-gray-700 mb-2">Document Hifzu&#39;s Meta Ads knowledge</p>
+                    <ul class="text-xs space-y-1 text-gray-600">
+                      <li>• Complete training SOP by Month 6</li>
+                      <li>• Knowledge transfer to team members</li>
+                      <li>• Validation through independent campaign management</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-green-200">
+                    <h4 class="font-semibold text-green-900 mb-2">Talent Retention</h4>
+                    <p class="text-sm text-gray-700 mb-2">ESOP/Profit Sharing at ₹1 Cr revenue</p>
+                    <ul class="text-xs space-y-1 text-gray-600">
+                      <li>• 5-10% equity/profit pool for core team</li>
+                      <li>• Vesting schedule for retention</li>
+                      <li>• Performance-based allocation</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-4 border border-amber-200">
+                    <h4 class="font-semibold text-amber-900 mb-2">Market Downturn</h4>
+                    <p class="text-sm text-gray-700 mb-2">Maintain 6-month operating reserve</p>
+                    <ul class="text-xs space-y-1 text-gray-600">
+                      <li>• Predefined expense reduction triggers</li>
+                      <li>• Liquidity buffer for survival</li>
+                      <li>• Rapid response protocols</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-900 mb-4">Key Performance Indicators (KPIs)</h3>
+
+                <div class="space-y-6">
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-3 flex items-center gap-2">
+                      <i class="fas fa-chart-line text-green-600"></i>
+                      Financial KPIs
+                    </h4>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex justify-between">
+                        <span>Monthly Recurring Revenue</span>
+                        <span class="font-semibold text-green-600">15% MoM growth</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Net Profit Margin</span>
+                        <span class="font-semibold text-green-600">&gt;35%</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Client Lifetime Value</span>
+                        <span class="font-semibold text-green-600">&gt;₹3L</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Avg. Revenue per Client</span>
+                        <span class="font-semibold text-green-600">&gt;₹60K</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-3 flex items-center gap-2">
+                      <i class="fas fa-cogs text-blue-600"></i>
+                      Operational KPIs
+                    </h4>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex justify-between">
+                        <span>Client Retention Rate</span>
+                        <span class="font-semibold text-blue-600">&gt;90%</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Project Delivery Time</span>
+                        <span class="font-semibold text-blue-600">Within SOP standards</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Creative Approval Cycle</span>
+                        <span class="font-semibold text-blue-600">&lt;3 days</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>SOP Adherence Score</span>
+                        <span class="font-semibold text-blue-600">&gt;85%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-3 flex items-center gap-2">
+                      <i class="fas fa-rocket text-purple-600"></i>
+                      Growth KPIs
+                    </h4>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex justify-between">
+                        <span>Lead-to-Meeting Conversion</span>
+                        <span class="font-semibold text-purple-600">&gt;20%</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Meeting-to-Close Rate</span>
+                        <span class="font-semibold text-purple-600">&gt;30%</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Referral % of New Business</span>
+                        <span class="font-semibold text-purple-600">&gt;25%</span>
+                      </div>
+                      <div class="flex justify-between">
+                        <span>Content Engagement Rate</span>
+                        <span class="font-semibold text-purple-600">&gt;3% (LI), &gt;5% (IG)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
+                <h3 class="font-semibold text-gray-900 mb-4">Success Measurement Framework</h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Weekly Reviews</p>
+                      <p class="text-xs text-gray-600">Growth metrics and pipeline health</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Monthly Reviews</p>
+                      <p class="text-xs text-gray-600">Financial and operational assessment</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+                    <div>
+                      <p class="font-medium text-sm">Quarterly Reviews</p>
+                      <p class="text-xs text-gray-600">Strategic team and business evaluation</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white">
+            <div class="text-center">
+              <h3 class="serif text-2xl font-bold mb-4">The Path to ₹10 Crore</h3>
+              <p class="text-lg mb-6">From loss-making generalist to performance marketing powerhouse</p>
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                  <div class="text-2xl font-bold">₹3L</div>
+                  <div class="text-sm">Foundation Phase</div>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                  <div class="text-2xl font-bold">₹1Cr</div>
+                  <div class="text-sm">Engine Build</div>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                  <div class="text-2xl font-bold">₹3Cr</div>
+                  <div class="text-sm">Channel Diversification</div>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                  <div class="text-2xl font-bold">₹10Cr</div>
+                  <div class="text-sm">Market Leadership</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile TOC toggle
+        function toggleTOC() {
+            const sidebar = document.querySelector('.toc-sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        // Close TOC when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.querySelector('.toc-sidebar');
+            const toggleButton = document.querySelector('.toc-toggle');
+            
+            if (!sidebar || !toggleButton) return;
+            
+            // Check if click is outside sidebar and toggle button
+            if (!sidebar.contains(event.target) && event.target !== toggleButton) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        // Function to handle responsive design
+        function handleResponsive() {
+            const sidebar = document.querySelector('.toc-sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const toggleButton = document.querySelector('.toc-toggle');
+            
+            if (window.innerWidth <= 1024) {
+                // Mobile view: add toggle button if not present
+                if (!toggleButton) {
+                    const newToggleButton = document.createElement('button');
+                    newToggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    newToggleButton.className = 'toc-toggle fixed top-4 left-4 z-50 bg-blue-600 text-white p-3 rounded-lg shadow-lg';
+                    newToggleButton.onclick = toggleTOC;
+                    document.body.appendChild(newToggleButton);
+                }
+            } else {
+                // Desktop view: remove toggle button if present
+                if (toggleButton) {
+                    toggleButton.remove();
+                }
+                // Ensure sidebar is visible
+                if (sidebar) {
+                    sidebar.classList.remove('open');
+                }
+            }
+        }
+
+        // Initial responsive setup
+        handleResponsive();
+
+        // Handle window resize
+        window.addEventListener('resize', handleResponsive);
+    </script>
+  
+
+</body></html>
